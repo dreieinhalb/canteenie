@@ -13,6 +13,7 @@ The following python 3 modules are needed:
 ## Usage
 
 ```
+$ ./canteenie.py -h
 usage: canteenie.py [-h] [-m {lmpl,sued,isch}] [-f]
 
 Small python script to get todays canteen/mensa meals for FAU.
