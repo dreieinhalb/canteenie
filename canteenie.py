@@ -41,12 +41,25 @@ print("")
 
 # print normal meals
 for i in range(1, meal_count + 1):
-	print("%d  " %i, menu_str.split("Essen %d" %i,1)[1].split("(Gäste)",1)[0][:-8])
+	if "Essen %d" %i in menu_str: # check for missing menu
+		slice_amount = -8
+		if "- €" in menu_str.split("Essen %d" %i,1)[1].split("(Gäste)",1)[0][:-8]: # check for missing price
+			slice_amount = -5	
+
+		print("%d  " %i, menu_str.split("Essen %d" %i,1)[1].split("(Gäste)",1)[0][:slice_amount]) # print meal
+	else:
+		print("A%d " %i, "-") # print pace holder
 
 # print special meals
 if meal_special_count != 0:
 	print("")
 	for i in range(1, meal_special_count + 1):
-		print("A%d " %i, menu_str.split("Aktionsessen %d" %i,1)[1].split("(Gäste)",1)[0][:-8])
-
+		if "Aktionsessen %d" %i in menu_str: # check for missing menu
+			slice_amount = -8
+			if "- €" in menu_str.split("Aktionsessen %d" %i,1)[1].split("(Gäste)",1)[0][:-8]: # check for missing price
+				slice_amount = -5
+							
+			print("A%d " %i, menu_str.split("Aktionsessen %d" %i,1)[1].split("(Gäste)",1)[0][:slice_amount]) # print meal
+		else:
+			print("A%d " %i, "-") # print pace holder
 print("")
