@@ -8,7 +8,6 @@ The following python 3 modules are needed:
 
 * python3-requests
 * python3-lxml
-* python3-pyfiglet
 
 ## Usage
 

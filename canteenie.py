@@ -5,15 +5,12 @@
 import requests
 import datetime
 import argparse
-import pyfiglet
 from lxml import html
-from lxml import etree
-from lxml.etree import tostring
 
 # command line arguments
 parser = argparse.ArgumentParser(description='Small python script to get todays canteen/mensa meals for FAU.')
 parser.add_argument('-m','--mensa', help='for which mensa? (lmpl: Erlangen Langemarckplatz (default), sued: Erlangen Süd, isch: Nürnberg Insel Schütt)', required=False, default="lmpl", choices=['lmpl', 'sued', 'isch'])
-parser.add_argument('-f','--disable-figlet', help='disable figlet header', required=False, default=False, action='store_true')
+parser.add_argument('-d','--disable-header', help='disable ascii art header', required=False, default=False, action='store_true')
 args = vars(parser.parse_args())
 
 # get html content from webpage
@@ -34,32 +31,45 @@ meal_special_count = menu_str.count("Aktionsessen")
 
 # print header
 now = datetime.datetime.now()
-if args['disable_figlet'] == False:
-	pyfiglet.print_figlet("Mensa")
+if args['disable_header'] == False:
+	print(" __  __                      ")
+	print("|  \/  | ___ _ __  ___  __ _ ")
+	print("| |\/| |/ _ \ '_ \/ __|/ _` |")
+	print("| |  | |  __/ | | \__ \ (_| |")
+	print("|_|  |_|\___|_| |_|___/\__,_|")
+	print("                             ")
 print("////////", now.strftime("%d.%m.%Y"),"/////////")
 print("")
 
 # print normal meals
-for i in range(1, meal_count + 1):
+i = 1
+while i < meal_count +1:
 	if "Essen %d" %i in menu_str: # check for missing menu
 		slice_amount = -8
 		if "- €" in menu_str.split("Essen %d" %i,1)[1].split("(Gäste)",1)[0][:-8]: # check for missing price
 			slice_amount = -5	
 
 		print("%d  " %i, menu_str.split("Essen %d" %i,1)[1].split("(Gäste)",1)[0][:slice_amount]) # print meal
+		i += 1
 	else:
 		print("A%d " %i, "-") # print pace holder
+		meal_count += 1
+		i += 1
 
 # print special meals
 if meal_special_count != 0:
 	print("")
-	for i in range(1, meal_special_count + 1):
+	i = 1
+	while i < meal_special_count + 1:
 		if "Aktionsessen %d" %i in menu_str: # check for missing menu
 			slice_amount = -8
 			if "- €" in menu_str.split("Aktionsessen %d" %i,1)[1].split("(Gäste)",1)[0][:-8]: # check for missing price
 				slice_amount = -5
 							
 			print("A%d " %i, menu_str.split("Aktionsessen %d" %i,1)[1].split("(Gäste)",1)[0][:slice_amount]) # print meal
+			i += 1
 		else:
 			print("A%d " %i, "-") # print pace holder
+			meal_special_count += 1
+			i += 1
 print("")
