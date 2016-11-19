@@ -1,6 +1,6 @@
 # canteenie
 
-Small python script to get todays canteen/mensa meals for Friedrich-Alexander-University (FAU).
+A small python script that prints todays canteen/mensa menu for FAU on console.
 
 ## Requirements
 
@@ -19,7 +19,7 @@ The following python 3 modules are needed:
 $ ./canteenie.py -h
 usage: canteenie.py [-h] [-m {lmpl,sued,isch}] [-l]
 
-Small python script to get todays canteen/mensa meals for FAU.
+A small python script that prints todays canteen/mensa menu for FAU on console.
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -33,6 +33,7 @@ optional arguments:
 ## Output example
 
 ```
+$ ./canteenie.py
  __  __
 |  \/  | ___ _ __  ___  __ _
 | |\/| |/ _ \ '_ \/ __|/ _` |

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""canteenie.py: Small python script to get todays canteen/mensa meals for FAU."""
+"""canteenie.py: A small python script that prints todays canteen/mensa menu for FAU on console."""
 
 import requests
 import datetime
@@ -8,7 +8,7 @@ import argparse
 from lxml import html
 
 # command line arguments
-parser = argparse.ArgumentParser(description='Small python script to get todays canteen/mensa meals for FAU.')
+parser = argparse.ArgumentParser(description='A small python script that prints todays canteen/mensa menu for FAU on console.')
 parser.add_argument('-m','--mensa', help='for which mensa? (lmpl: Erlangen Langemarckplatz (default), sued: Erlangen Süd, isch: Nürnberg Insel Schütt)', required=False, default="lmpl", choices=['lmpl', 'sued', 'isch'])
 parser.add_argument('-l','--disable-header', help='disable ascii art header (lite view)', required=False, default=False, action='store_true')
 args = vars(parser.parse_args())
