@@ -13,7 +13,8 @@ The following python 3 modules are needed:
 
 ### Installation
 
-* Ubuntu/Debian: `$ apt-get install python3-requests python3-lxml`
+* Install modules on Ubuntu/Debian: `$ apt-get install python3-requests python3-lxml`
+* Clone git repository: `git clone https://github.com/dreieinhalb/canteenie.git`
 
 ## Usage
 
