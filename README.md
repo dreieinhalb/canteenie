@@ -1,3 +1,5 @@
+![alt tag](https://raw.githubusercontent.com/dreieinhalb/canteenie/master/icon/canteenie_logo.png)
+
 # canteenie
 
 A small python script that prints todays canteen/mensa menu for Friedrich-Alexander-University (FAU) on console.
