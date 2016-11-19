@@ -1,6 +1,6 @@
 # canteenie
 
-A small python script that prints todays canteen/mensa menu for FAU on console.
+A small python script that prints todays canteen/mensa menu for Friedrich-Alexander-University (FAU) on console.
 
 ## Requirements
 
