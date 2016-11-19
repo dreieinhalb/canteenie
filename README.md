@@ -11,7 +11,7 @@ The following python 3 modules are needed:
 
 ### Installation
 
-* Ubuntu/Debian: `apt-get install python3-requests python3-lxml`
+* Ubuntu/Debian: `$ apt-get install python3-requests python3-lxml`
 
 ## Usage
 
