@@ -10,7 +10,7 @@ from lxml import html
 # command line arguments
 parser = argparse.ArgumentParser(description='Small python script to get todays canteen/mensa meals for FAU.')
 parser.add_argument('-m','--mensa', help='for which mensa? (lmpl: Erlangen Langemarckplatz (default), sued: Erlangen Süd, isch: Nürnberg Insel Schütt)', required=False, default="lmpl", choices=['lmpl', 'sued', 'isch'])
-parser.add_argument('-d','--disable-header', help='disable ascii art header', required=False, default=False, action='store_true')
+parser.add_argument('-l','--disable-header', help='disable ascii art header (lite view)', required=False, default=False, action='store_true')
 args = vars(parser.parse_args())
 
 # get html content from webpage
