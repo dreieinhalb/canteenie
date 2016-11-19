@@ -17,7 +17,7 @@ The following python 3 modules are needed:
 
 ```
 $ ./canteenie.py -h
-usage: canteenie.py [-h] [-m {lmpl,sued,isch}] [-f]
+usage: canteenie.py [-h] [-m {lmpl,sued,isch}] [-l]
 
 Small python script to get todays canteen/mensa meals for FAU.
 
@@ -27,9 +27,9 @@ optional arguments:
                         for which mensa? (lmpl: Erlangen Langemarckplatz
                         (default), sued: Erlangen Süd, isch: Nürnberg Insel
                         Schütt)
-  -f, --disable-figlet  disable figlet header
-
+  -l, --disable-header  disable ascii art header (lite view)
 ```
+
 ## Output example
 
 ```
