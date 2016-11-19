@@ -11,7 +11,7 @@ The following python 3 modules are needed:
 * [requests](https://pypi.python.org/pypi/requests/2.11.1)
 * [lxml](https://pypi.python.org/pypi/lxml/3.6.4)
 
-### Installation
+## Installation
 
 * Install modules on Ubuntu/Debian: `$ apt-get install python3-requests python3-lxml`
 * Clone git repository: `$ git clone https://github.com/dreieinhalb/canteenie.git`
