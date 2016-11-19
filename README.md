@@ -6,8 +6,8 @@ Small python script to get todays canteen/mensa meals for Friedrich-Alexander-Un
 
 The following python 3 modules are needed:
 
-* python3-requests
-* python3-lxml
+* [requests](https://pypi.python.org/pypi/requests/2.11.1) (ubuntu/debian package name: python3-requests)
+* [lxml](https://pypi.python.org/pypi/lxml/3.6.4) (ubuntu/debian package name: python3-lxml)
 
 ## Usage
 
