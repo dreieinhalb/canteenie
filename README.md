@@ -1,4 +1,4 @@
-![canteenie logo](https://raw.githubusercontent.com/dreieinhalb/canteenie/master/icon/canteenie_logo.png)
+![canteenie logo](/icon/canteenie_logo.png)
 
 # canteenie
 
