@@ -38,6 +38,7 @@ if args['disable_header'] == False:
 	print("| |  | |  __/ | | \__ \ (_| |")
 	print("|_|  |_|\___|_| |_|___/\__,_|")
 	print("                             ")
+
 print("////////", now.strftime("%d.%m.%Y"),"/////////")
 print("")
 
@@ -53,7 +54,8 @@ while i < meal_count +1:
 		i += 1
 	else:
 		print("A%d " %i, "-") # print pace holder
-		meal_count += 1
+		if meal_count < menu_str.count("Essen"): # check for two meals with same number
+			meal_count += 1
 		i += 1
 
 # print special meals
@@ -70,6 +72,7 @@ if meal_special_count != 0:
 			i += 1
 		else:
 			print("A%d " %i, "-") # print pace holder
-			meal_special_count += 1
+			if meal_special_count < menu_str.count("Aktionsessen"): # check for two meals with same number
+				meal_special_count += 1
 			i += 1
 print("")
