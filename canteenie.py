@@ -53,7 +53,6 @@ while i < meal_count +1:
 		print("%d  " %i, menu_str.split("Essen %d" %i,1)[1].split("(Gäste)",1)[0][:slice_amount]) # print meal
 		i += 1
 	else:
-		print("A%d " %i, "-") # print pace holder
 		if meal_count < menu_str.count("Essen"): # check for two meals with same number
 			meal_count += 1
 		i += 1
@@ -71,7 +70,6 @@ if meal_special_count != 0:
 			print("A%d " %i, menu_str.split("Aktionsessen %d" %i,1)[1].split("(Gäste)",1)[0][:slice_amount]) # print meal
 			i += 1
 		else:
-			print("A%d " %i, "-") # print pace holder
 			if meal_special_count < menu_str.count("Aktionsessen"): # check for two meals with same number
 				meal_special_count += 1
 			i += 1
