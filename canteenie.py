@@ -6,6 +6,7 @@ import requests
 import datetime
 import argparse
 from lxml import html
+import xmascc
 
 # command line arguments
 parser = argparse.ArgumentParser(description='A small python script that prints today\'s canteen/mensa menu for FAU on console.')
@@ -73,4 +74,7 @@ if meal_special_count != 0:
 			if meal_special_count < menu_str.count("Aktionsessen"): # check for two meals with same number
 				meal_special_count += 1
 			i += 1
+print("")
+
+xmascc.print_countdown()
 print("")
