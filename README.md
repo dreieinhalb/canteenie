@@ -8,8 +8,9 @@ A small python script that prints today's canteen/mensa menu for Friedrich-Alexa
 
 The following python 3 modules are needed:
 
-* [requests](https://pypi.python.org/pypi/requests/2.11.1)
-* [lxml](https://pypi.python.org/pypi/lxml/3.6.4)
+* [requests](https://pypi.python.org/pypi/requests)
+* [lxml](https://pypi.python.org/pypi/lxml)
+* [colorama](https://pypi.python.org/pypi/colorama)
 
 ## Installation
 
@@ -20,9 +21,10 @@ The following python 3 modules are needed:
 
 ```
 $ ./canteenie.py -h
-usage: canteenie.py [-h] [-m {lmpl,sued,isch}] [-l]
+usage: canteenie [-h] [-m {lmpl,sued,isch}] [-l]
 
-A small python script that prints today's canteen/mensa menu for FAU on console.
+A small python script that prints today's canteen/mensa menu for FAU on
+console.
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -30,7 +32,7 @@ optional arguments:
                         for which mensa? (lmpl: Erlangen Langemarckplatz
                         (default), sued: Erlangen Süd, isch: Nürnberg Insel
                         Schütt)
-  -l, --disable-header  disable ascii art header (lite view)
+  -l, --lite            disable ascii art header and color (lite view)
 ```
 
 ## Output example
