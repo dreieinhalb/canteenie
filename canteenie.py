@@ -22,9 +22,9 @@ menu = tree.xpath('/html/body/div[3]/div/div[2]/div[2]/text()')
 
 # join to string and tidy up the text
 menu_str = ' '.join(menu) # join list to one string
-menu_str = menu_str.replace(u'\xa0', u' ') # remove no break space
-menu_str = menu_str.replace(u'\n', u' ') # remove line feed
-menu_str = menu_str.replace(u'\r', u' ') # remove carriage return
+menu_str = menu_str.replace('\xa0', ' ') # remove no break space
+menu_str = menu_str.replace('\n', ' ') # remove line feed
+menu_str = menu_str.replace('\r', ' ') # remove carriage return
 menu_str = " ".join(menu_str.split()) # remove more than one space
 
 # count amount of meals
