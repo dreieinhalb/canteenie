@@ -1,0 +1,1 @@
+perl -pe 's/ \[.*?\]//g;' -pe 's/food-icon//g;' -pe 's/Bed.\).*$/Bed.\)/g;' -pe 's/ +/ /g;' -pe 's/^\n//;' -pe 's/^.*\(Stud.\) //g;' -pe 's/Essen (\d)/ E\1 /g;' -pe 's/Aktionsessen (\d)/ A\1 /g;' -pe 's/\n//g;' -pe 's/\(Bed.\)/\n/;' -pe 's/(\d+,\d+ €)/ \1/;' -pe 's/ \(.*?\)//g;' mensa-donnerstag.txt
