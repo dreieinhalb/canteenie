@@ -7,6 +7,7 @@ import datetime
 import argparse
 from lxml import html
 from colorama import Fore, Style
+import textwrap
 import xmascc
 
 # command line arguments
@@ -35,18 +36,27 @@ meal_special_count = menu_str.count("Aktionsessen")
 now = datetime.datetime.now()
 if not args['lite']: print(Fore.YELLOW + '', end="")
 if args['lite'] == False:
-	print(" __  __                      ")
-	print("|  \/  | ___ _ __  ___  __ _ ")
-	print("| |\/| |/ _ \ '_ \/ __|/ _` |")
-	print("| |  | |  __/ | | \__ \ (_| |")
-	print("|_|  |_|\___|_| |_|___/\__,_|")
-	print("                             ")
+	print("\t                             ")
+	print("\t __  __                      ")
+	print("\t|  \/  | ___ _ __  ___  __ _ ")
+	print("\t| |\/| |/ _ \ '_ \/ __|/ _` |")
+	print("\t| |  | |  __/ | | \__ \ (_| |")
+	print("\t|_|  |_|\___|_| |_|___/\__,_|")
+	print("\t                             ")
 if not args['lite']: print(Style.RESET_ALL + '', end="")
 
 if not args['lite']: print(Fore.GREEN + '', end="")
+if not args['lite']: print("\t", end='')
 print("////////", now.strftime("%d.%m.%Y"),"/////////")
 if not args['lite']: print(Style.RESET_ALL + '', end="")
 print("")
+
+def wrap(meal_string):
+	prefix = "\t\t"
+	preferredWidth = 105
+	wrapper = textwrap.TextWrapper(subsequent_indent=prefix, width=preferredWidth)
+	print(wrapper.fill(meal_string))
+	return
 
 # print normal meals
 i = 1
@@ -57,7 +67,12 @@ while i < meal_count +1:
 			slice_amount = -5	
 
 		if not args['lite']: print(Fore.CYAN + '', end="")
-		print("%d  " %i, menu_str.split("Essen %d" %i,1)[1].split("(Gäste)",1)[0][:slice_amount]) # print meal
+		if not args['lite']: print("\t", end='')
+		meal_string = "%d\t" %i + menu_str.split("Essen %d" %i,1)[1].split("(Gäste)",1)[0][:slice_amount]
+		if not args['lite']:
+			wrap(meal_string)
+		else:
+			print(meal_string)
 		if not args['lite']: print(Style.RESET_ALL + '', end="")
 		i += 1
 	else:
@@ -75,15 +90,23 @@ if meal_special_count != 0:
 				slice_amount = -5
 							
 			if not args['lite']: print(Fore.BLUE + '', end="")
-			print("A%d " %i, menu_str.split("Aktionsessen %d" %i,1)[1].split("(Gäste)",1)[0][:slice_amount]) # print meal
+			if not args['lite']: print("\t", end='')
+			meal_special_string= "A%d\t" %i + menu_str.split("Aktionsessen %d" %i,1)[1].split("(Gäste)",1)[0][:slice_amount]
+			if not args['lite']:
+				wrap(meal_special_string)
+			else:
+				print(meal_special_string)
 			if not args['lite']: print(Style.RESET_ALL + '', end="")
 			i += 1
 		else:
 			meal_special_count += 1
 			i += 1
 print("")
+if not args['lite']: print("")
 
-if not args['lite']: print(Fore.MAGENTA + '', end="")
-xmascc.print_countdown()
-if not args['lite']: print(Style.RESET_ALL + '', end="")
-print("")
+#xmascc
+#if not args['lite']: print(Fore.MAGENTA + '', end="")
+#if not args['lite']: print("\t", end='')
+#print(xmascc.get_countdown())
+#if not args['lite']: print(Style.RESET_ALL + '', end="")
+#print("")
