@@ -111,7 +111,7 @@ category_map = {"Vegetarisch":"V", "Schwein":"S", "Rind":"R", "Geflügel":"G", "
 # set counter for numbering meals
 i = 1;
 for meal in meals:
-    number = str(i) + ". "
+    number = "(" + str(i) + ") "
     # remove duplicate and trailing spaces from name
     name = re.sub(' ,', ',', re.sub(' +', ' ', meal['name'].rstrip()))
     # format price with comma
