@@ -119,7 +119,7 @@ for meal in meals:
     # build category string
     categories = meal['category'].split()
     category_str = ''
-    for category in categories:
+    for category in set(categories):
         if category in category_map:
             category_str += category_map[category]
     # add brackets to category string if not empty
