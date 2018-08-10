@@ -30,6 +30,29 @@ category_map = {
 
 
 ###############################################################################
+# function to validate date
+def valid_date(s):
+    try:
+        return datetime.datetime.strptime(s, "%Y-%m-%d")
+    except ValueError:
+        msg = "Not a valid date: '{0}'.".format(s)
+        raise argparse.ArgumentTypeError(msg)
+
+# function to return colored text
+def colorize(text, color):
+    # only return colored text if lite option is not set
+    if not args['lite']: return colored(text, color)
+    else:                 return text
+
+# function to return intentation
+def intent():
+    # only return intentation if lite option is not set
+    if not args['lite']: return "\t"
+    else:                return ''
+
+
+
+###############################################################################
 # command line arguments
 parser = argparse.ArgumentParser(description='A small python script that prints today\'s canteen/mensa menu for FAU on console.')
 parser.add_argument(
@@ -67,29 +90,6 @@ parser.add_argument(
     required = False,
 )
 args = vars(parser.parse_args())
-
-
-
-###############################################################################
-# function to validate date
-def valid_date(s):
-    try:
-        return datetime.datetime.strptime(s, "%Y-%m-%d")
-    except ValueError:
-        msg = "Not a valid date: '{0}'.".format(s)
-        raise argparse.ArgumentTypeError(msg)
-
-# function to return colored text
-def colorize(text, color):
-    # only return colored text if lite option is not set
-    if not args['lite']: return colored(text, color)
-    else:                 return text
-
-# function to return intentation
-def intent():
-    # only return intentation if lite option is not set
-    if not args['lite']: return "\t"
-    else:                return ''
 
 
 
