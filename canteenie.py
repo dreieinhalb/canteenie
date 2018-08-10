@@ -37,41 +37,41 @@ parser = argparse.ArgumentParser(description='A small python script that prints 
 parser.add_argument(
         '-m',
         '--mensa',
-        help='for which mensa? (lmpl: Erlangen Langemarckplatz (default), sued: Erlangen Süd, isch: Nürnberg Insel Schütt)',
-        choices=['lmpl', 'sued', 'isch'],
-        default="lmpl",
-        required=False
+        help = 'for which mensa? (lmpl: Erlangen Langemarckplatz (default), sued: Erlangen Süd, isch: Nürnberg Insel Schütt)',
+        choices = ['lmpl', 'sued', 'isch'],
+        default = "lmpl",
+        required = False
 )
 parser.add_argument(
         '-i',
         '--id',
-        help='for which ID on openmensa.org?',
-        default=argparse.SUPPRESS, # don't define key if not given
-        required=False
+        help = 'for which ID on openmensa.org?',
+        default = argparse.SUPPRESS, # don't define key if not given
+        required = False
 )
 parser.add_argument(
         '-d',
         '--date',
-        help='for which date (YYYY-MM-DD)?',
-        default=argparse.SUPPRESS, # don't define key if not given
-        required=False,
-        type=valid_date
+        help = 'for which date (YYYY-MM-DD)?',
+        default = argparse.SUPPRESS, # don't define key if not given
+        required = False,
+        type = valid_date
 )
 parser.add_argument(
         '-l',
         '--lite',
-        help='disable ascii art header and color (lite view)',
-        action='store_true',
-        default=False,
-        required=False
+        help = 'disable ascii art header and color (lite view)',
+        action = 'store_true',
+        default = False,
+        required = False
 )
 parser.add_argument(
         '-p',
         '--price',
-        help='prices for which group? (employees (default), students, others)',
-        choices=['employees', 'students', 'others'],
-        default="employees",
-        required=False
+        help = 'prices for which group? (employees (default), students, others)',
+        choices = ['employees', 'students', 'others'],
+        default = "employees",
+        required = False
 )
 args = vars(parser.parse_args())
 
