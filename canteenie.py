@@ -8,6 +8,8 @@ import re
 from openmensa import OpenMensa as openmensa
 from termcolor import colored
 
+
+
 ###############################################################################
 # map for assignment of IDs for FAU canteens
 fau_mensa = {
@@ -25,44 +27,48 @@ category_map = {
     "Fisch"       : "F",
 }
 
+
+
 ###############################################################################
 # command line arguments
 parser = argparse.ArgumentParser(description='A small python script that prints today\'s canteen/mensa menu for FAU on console.')
 parser.add_argument(
-        '-m', '--mensa',
-        help     = 'for which mensa? (lmpl: Erlangen Langemarckplatz (default), sued: Erlangen Süd, isch: Nürnberg Insel Schütt)',
-        choices  = ['lmpl', 'sued', 'isch'],
-        default  = "lmpl",
-        required = False
+    '-m', '--mensa',
+    help     = 'for which mensa? (lmpl: Erlangen Langemarckplatz (default), sued: Erlangen Süd, isch: Nürnberg Insel Schütt)',
+    default  = "lmpl",
+    choices  = ['lmpl', 'sued', 'isch'],
+    required = False,
 )
 parser.add_argument(
-        '-i', '--id',
-        help     = 'for which ID on openmensa.org?',
-        default  = argparse.SUPPRESS, # don't define key if not given
-        required = False
+    '-i', '--id',
+    help     = 'for which ID on openmensa.org?',
+    default  = argparse.SUPPRESS, # don't define key if not given
+    required = False,
 )
 parser.add_argument(
-        '-d', '--date',
-        help     = 'for which date (YYYY-MM-DD)?',
-        default  = argparse.SUPPRESS, # don't define key if not given
-        required = False,
-        type     = valid_date
+    '-d', '--date',
+    help     = 'for which date (YYYY-MM-DD)?',
+    default  = argparse.SUPPRESS, # don't define key if not given
+    type     = valid_date,
+    required = False,
 )
 parser.add_argument(
-        '-l', '--lite',
-        help     = 'disable ascii art header and color (lite view)',
-        action   = 'store_true',
-        default  = False,
-        required = False
+    '-l', '--lite',
+    help     = 'disable ascii art header and color (lite view)',
+    action   = 'store_true',
+    default  = False,
+    required = False,
 )
 parser.add_argument(
-        '-p', '--price',
-        help     = 'prices for which group? (employees (default), students, others)',
-        choices  = ['employees', 'students', 'others'],
-        default  = "employees",
-        required = False
+    '-p', '--price',
+    help     = 'prices for which group? (employees (default), students, others)',
+    default  = "employees",
+    choices  = ['employees', 'students', 'others'],
+    required = False,
 )
 args = vars(parser.parse_args())
+
+
 
 ###############################################################################
 # function to validate date
@@ -85,6 +91,8 @@ def intent():
     if not args['lite']: return "\t"
     else:                return ''
 
+
+
 ###############################################################################
 # argument computing
 # use mensa Langemarckplatz as default, or use given ID from args
@@ -97,6 +105,8 @@ if 'date'  in args: date = args['date']
 
 # get meals from openmensa API
 meals = openmensa.get_meals_by_day(openmensa_id, date.strftime("%Y-%m-%d"))
+
+
 
 ###############################################################################
 # print header (ascii art only in non lite version)
@@ -111,6 +121,8 @@ if not args['lite']:
     print(iten + colorize("                             ",'yellow'))
 print(intent() + colorize("//////// " + date.strftime("%d.%m.%Y") + " /////////", 'green'))
 print("")
+
+
 
 ###############################################################################
 # generating menu
@@ -140,6 +152,8 @@ for meal in meals:
     i += 1
 
 print()
+
+
 
 ###############################################################################
 # Finish-Line
