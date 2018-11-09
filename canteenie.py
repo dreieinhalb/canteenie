@@ -9,8 +9,6 @@ from openmensa import OpenMensa as openmensa
 from termcolor import colored
 
 
-
-###############################################################################
 # map for assignment of IDs for FAU canteens
 fau_mensa = {
     "lmpl" : 264,
@@ -28,31 +26,29 @@ category_map = {
 }
 
 
-
-###############################################################################
-# function to validate date
 def valid_date(s):
+    """ validate passed date and throw exception if it is not valid """
     try:
         return datetime.datetime.strptime(s, "%Y-%m-%d")
     except ValueError:
         msg = "Not a valid date: '{0}'.".format(s)
         raise argparse.ArgumentTypeError(msg)
 
-# function to return colored text
 def colorize(text, color):
-    # only return colored text if lite option is not set
+    """ return colored text
+        (only if lite option is not set)
+    """
     if not args['lite']: return colored(text, color)
     else:                 return text
 
-# function to return intentation
 def intent():
-    # only return intentation if lite option is not set
+    """ return intentation
+        (only if lite option is not set)
+    """
     if not args['lite']: return "\t"
     else:                return ''
 
 
-
-###############################################################################
 # command line arguments
 parser = argparse.ArgumentParser(description='A small python script that prints today\'s canteen/mensa menu for FAU on console.')
 parser.add_argument(
@@ -92,8 +88,6 @@ parser.add_argument(
 args = vars(parser.parse_args())
 
 
-
-###############################################################################
 # argument computing
 # use mensa Langemarckplatz as default, or use given ID from args
 openmensa_id = 264
@@ -107,8 +101,6 @@ if 'date'  in args: date = args['date']
 meals = openmensa.get_meals_by_day(openmensa_id, date.strftime("%Y-%m-%d"))
 
 
-
-###############################################################################
 # print header (ascii art only in non lite version)
 if not args['lite']:
     iten = intent()
@@ -123,9 +115,7 @@ print(intent() + colorize("//////// " + date.strftime("%d.%m.%Y") + " /////////"
 print("")
 
 
-
-###############################################################################
-# generating menu
+# generate/print menu
 # set counter for numbering meals
 i = 1;
 for meal in meals:
@@ -154,9 +144,6 @@ for meal in meals:
 print()
 
 
-
-###############################################################################
-# Finish-Line
 # print legend
 print(intent(), end='')
 for category in category_map:
