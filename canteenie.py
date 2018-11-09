@@ -106,8 +106,13 @@ if 'id'    in args: openmensa_id =           args['id']
 # use today as default or given date from args
 if 'date'  in args: date = args['date']
 
+
 # get meals from openmensa API
-meals = openmensa.get_meals_by_day(openmensa_id, date.strftime("%Y-%m-%d"))
+try:
+    meals = openmensa.get_meals_by_day(openmensa_id, date.strftime("%Y-%m-%d"))
+except Exception as e:
+    print("Found no meal for given date at OpenMensaAPI, maybe you are looking for a too old, too far away or closed day.")
+    raise SystemExit
 
 
 # print header (ascii art only in non lite version)
