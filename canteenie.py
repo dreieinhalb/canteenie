@@ -47,15 +47,19 @@ def colorize(text, color):
     """ return colored text
         (only if lite option is not set)
     """
-    if not args['lite']: return colored(text, color)
-    else:                 return text
+    if not args['lite']:
+        return colored(text, color)
+    else:
+        return text
 
 def intent():
     """ return intentation
         (only if lite option is not set)
     """
-    if not args['lite']: return "\t"
-    else:                return ''
+    if not args['lite']:
+        return "\t"
+    else:
+        return ''
 
 
 # command line arguments
@@ -108,8 +112,10 @@ args = vars(parser.parse_args())
 # use mensa Langemarckplatz as default, or use given ID from args
 openmensa_id = 264
 date         = datetime.datetime.now()
-if 'mensa' in args: openmensa_id = fau_mensa[args['mensa']]
-if 'id'    in args: openmensa_id =           args['id']
+if 'mensa' in args:
+    openmensa_id = fau_mensa[args['mensa']]
+if 'id'    in args:
+    openmensa_id = args['id']
 # use today as default or given date from args
 if 'date'  in args: date = args['date']
 
@@ -152,10 +158,13 @@ for meal in meals:
     categories   = meal['category'].split()
     category_str = ''
     for category in set(categories):
-        if category in category_map: category_str += category_map[category]
+        if category in category_map:
+            category_str += category_map[category]
     # add brackets to category string if not empty
-    if not category_str == '': category_str = ' [' + category_str + '] '
-    else:                      category_str = ' '
+    if not category_str == '':
+        category_str = ' [' + category_str + '] '
+    else:
+        category_str = ' '
 
     # print meal
     print(intent() + colorize(number + name + category_str + price, 'cyan'))
