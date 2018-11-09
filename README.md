@@ -20,9 +20,9 @@ The following python 3 modules are needed:
 ## Usage
 
 ```
-$ ./canteenie.py -h
-usage: canteenie.py [-h] [-m {lmpl,sued,isch}] [-i ID] [-d DATE] [-l]
-                    [-p {employees,students,others}]
+$ ./canteenie.py --help
+usage: canteenie [-h] [-m {lmpl,sued,isch}] [-i ID] [-d DATE] [-l]
+                 [-p {employees,students,others}] [--no-xmascc]
 
 A small python script that prints today's canteen/mensa menu for FAU on
 console.
@@ -39,6 +39,7 @@ optional arguments:
   -p {employees,students,others}, --price {employees,students,others}
                         prices for which group? (employees (default),
                         students, others)
+  --no-xmascc           disable christmas closing countdown
 ```
 
 ## Output example

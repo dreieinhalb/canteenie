@@ -94,6 +94,13 @@ parser.add_argument(
     choices  = ['employees', 'students', 'others'],
     required = False,
 )
+parser.add_argument(
+    '--no-xmascc',
+    help     = 'disable christmas closing countdown',
+    action   = 'store_true',
+    default  = False,
+    required = False,
+)
 args = vars(parser.parse_args())
 
 
@@ -166,10 +173,11 @@ print("\n")
 
 
 # print xmas closing countdown (xmascc)
-last_holiday = datetime.datetime.strptime(config.get('xmascc', 'last_holiday'), '%Y-%m-%d')
-last_workday = datetime.datetime.strptime(config.get('xmascc', 'last_workday'), '%Y-%m-%d')
+if not args['no_xmascc']:
+    last_holiday = datetime.datetime.strptime(config.get('xmascc', 'last_holiday'), '%Y-%m-%d')
+    last_workday = datetime.datetime.strptime(config.get('xmascc', 'last_workday'), '%Y-%m-%d')
 
-if date >= last_holiday and date.year == last_holiday.year:
-    print(intent(), end='')
-    print(colorize(xmascc.get_countdown(date,last_workday), 'magenta'))
-    print()
+    if date >= last_holiday and date.year == last_holiday.year:
+        print(intent(), end='')
+        print(colorize(xmascc.get_countdown(date,last_workday), 'magenta'))
+        print()
