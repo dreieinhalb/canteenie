@@ -4,10 +4,12 @@
 
 import configparser
 import datetime
+import os
 from datetime import date,timedelta
 
+script_path = os.path.dirname(os.path.realpath(__file__))
 config = configparser.ConfigParser()
-config.read('canteenie.ini')
+config.read(script_path + '/canteenie.ini')
 
 now = datetime.datetime.now()
 last_workday = datetime.datetime.strptime(config.get('xmascc', 'last_workday'), '%Y-%m-%d')

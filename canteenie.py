@@ -5,6 +5,7 @@
 import argparse
 import configparser
 import datetime
+import os
 import re
 import xmascc
 from openmensa import OpenMensa as openmensa
@@ -12,8 +13,9 @@ from termcolor import colored
 
 
 # read config file
+script_path = os.path.dirname(os.path.realpath(__file__))
 config = configparser.ConfigParser()
-config.read('canteenie.ini')
+config.read(script_path + '/canteenie.ini')
 
 
 # map for assignment of IDs for FAU canteens
