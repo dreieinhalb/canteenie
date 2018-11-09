@@ -3,10 +3,17 @@
 """canteenie.py: A small python script that prints today's canteen/mensa on console using openmensa API."""
 
 import argparse
+import configparser
 import datetime
 import re
+import xmascc
 from openmensa import OpenMensa as openmensa
 from termcolor import colored
+
+
+# read config file
+config = configparser.ConfigParser()
+config.read('canteenie.ini')
 
 
 # map for assignment of IDs for FAU canteens
@@ -149,3 +156,12 @@ print(intent(), end='')
 for category in category_map:
     print(colorize(category_map[category] + "=" + category, 'blue') + " ", end='')
 print("\n")
+
+
+# print xmas closing countdown (xmascc)
+now = datetime.datetime.now()
+last_holiday = datetime.datetime.strptime(config.get('xmascc', 'last_holiday'), '%Y-%m-%d')
+if now >= last_holiday and now.year == last_holiday.year:
+    print(intent(), end='')
+    print(colorize(xmascc.get_countdown(), 'magenta'))
+    print()

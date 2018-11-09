@@ -2,14 +2,18 @@
 
 """xmascc.py: A small python extension for canteenie to print a countdown until christmas closing of FAU."""
 
+import configparser
 import datetime
 from datetime import date,timedelta
 
-#fromdate = date(2017,11,7)
+config = configparser.ConfigParser()
+config.read('canteenie.ini')
+
 now = datetime.datetime.now()
+last_workday = datetime.datetime.strptime(config.get('xmascc', 'last_workday'), '%Y-%m-%d')
 
 fromdate = date(now.year, now.month, now.day)
-todate = date(2017,12,22)
+todate = date(last_workday.year, last_workday.month, last_workday.day)
 
 daygenerator = (fromdate + timedelta(x + 1) for x in range((todate - fromdate).days))
 
