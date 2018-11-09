@@ -166,9 +166,10 @@ print("\n")
 
 
 # print xmas closing countdown (xmascc)
-now = datetime.datetime.now()
 last_holiday = datetime.datetime.strptime(config.get('xmascc', 'last_holiday'), '%Y-%m-%d')
-if now >= last_holiday and now.year == last_holiday.year:
+last_workday = datetime.datetime.strptime(config.get('xmascc', 'last_workday'), '%Y-%m-%d')
+
+if date >= last_holiday and date.year == last_holiday.year:
     print(intent(), end='')
-    print(colorize(xmascc.get_countdown(), 'magenta'))
+    print(colorize(xmascc.get_countdown(date,last_workday), 'magenta'))
     print()
