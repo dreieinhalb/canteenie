@@ -178,15 +178,17 @@ print()
 print(intent(), end='')
 for category in category_map:
     print(colorize(category_map[category] + "=" + category, 'blue') + " ", end='')
-print("\n")
 
 
 # print xmas closing countdown (xmascc)
 if not args['no_xmascc']:
+    print("\n")
     last_holiday = datetime.datetime.strptime(config.get('xmascc', 'last_holiday'), '%Y-%m-%d')
     last_workday = datetime.datetime.strptime(config.get('xmascc', 'last_workday'), '%Y-%m-%d')
 
     if date >= last_holiday and date.year == last_holiday.year:
         print(intent(), end='')
         print(colorize(xmascc.get_countdown(date,last_workday), 'magenta'))
-        print()
+
+
+if not args['lite']: print("\n")
