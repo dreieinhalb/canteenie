@@ -2,7 +2,7 @@
 
 # canteenie
 
-A small python script that prints today's canteen/mensa on console using openmensa API.
+A small python script that prints today's canteen/mensa menu on console using openmensa API.
 
 ## Requirements
 
