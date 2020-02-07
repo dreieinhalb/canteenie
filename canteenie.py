@@ -151,8 +151,8 @@ for meal in meals:
     # remove duplicate and trailing spaces from name
     name = re.sub(' ,', ',', re.sub(' +', ' ', meal['name'].rstrip()))
 
-    # format price with comma
-    price = str(meal['prices'][args['price']]).replace('.',',') + " €"
+    # format price with padded zeros and comma
+    price = "{:.2f}".format(meal['prices'][args['price']]).replace('.',',') + " €"
 
     # build category string
     categories   = meal['category'].split()
