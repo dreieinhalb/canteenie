@@ -151,8 +151,12 @@ for meal in meals:
     # remove duplicate and trailing spaces from name
     name = re.sub(' ,', ',', re.sub(' +', ' ', meal['name'].rstrip()))
 
-    # format price with padded zeros and comma
-    price = "{:.2f}".format(meal['prices'][args['price']]).replace('.',',') + " €"
+    price = meal['prices'][args['price']]
+    if price is None:
+        price_formatted = 'n/a €';
+    else:
+        # format price with padded zeros and comma
+        price_formatted = "{:.2f}".format(price).replace('.',',') + " €"
 
     # build category string
     categories   = meal['category'].split()
@@ -167,7 +171,7 @@ for meal in meals:
         category_str = ' '
 
     # print meal
-    print(intent() + colorize(number + name + category_str + price, 'cyan'))
+    print(intent() + colorize(number + name + category_str + price_formatted, 'cyan'))
 
     i += 1
 
